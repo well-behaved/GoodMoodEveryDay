@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.util.Random;
 
 /**
  * @author: xuexiong@souche.com
@@ -27,6 +30,10 @@ public class TreeNodeBean {
      * 右子节点
      */
     TreeNodeBean right;
+
+    public TreeNodeBean(Integer val) {
+        this.val = val;
+    }
 
     /**
      * 左是否为空
@@ -51,4 +58,9 @@ public class TreeNodeBean {
         return this.right != null;
 
     }
+//    public static TreeNodeBean randomCreate(){
+//        TreeNodeBean treeNodeBean = new TreeNodeBean();
+//        treeNodeBean.setVal(new Random().nextInt(1000));
+//
+//    }
 }
