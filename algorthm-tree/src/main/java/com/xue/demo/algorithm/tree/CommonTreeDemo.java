@@ -30,12 +30,64 @@ public class CommonTreeDemo {
         postOrderTraversal(treeNodeBean);
         System.out.println("\n\r" + "树的最大高度为:" + height(treeNodeBean));
         System.out.println("\n\r" + "判断一棵树是否为平衡树:" + isAvl(treeNodeBean));
+        //判断一个树是另一个树的子树
+        TreeNodeBean parent = new TreeNodeBean();
+        TreeNodeBean children = new TreeNodeBean();
+        ischildren(parent, children);
 
     }
 
     /**
-     * 判断一颗树是否为平衡树
+     * 判断一个树是否为另一个树的子树
      *
+     * @param
+     * @return
+     * @author xuexiong@souche.com  22:08 2020-03-19
+     **/
+    private static void ischildren(TreeNodeBean parent, TreeNodeBean children) {
+        //层序遍历 + 递归比较
+        QueueBean<TreeNodeBean> queueBean = new QueueBean<>();
+        queueBean.add(parent);
+        ischildren(queueBean, children);
+
+    }
+
+    /**
+     * 判断一个树是否为另一个树的子树
+     * 层序遍历 + 递归判断
+     * @param
+     * @return
+     * @author xuexiong@souche.com  22:08 2020-03-19
+     **/
+    private static void ischildren(QueueBean<TreeNodeBean> parent, TreeNodeBean children) {
+        TreeNodeBean treeNodeBean = parent.get();
+        if (isSame(treeNodeBean.getLeft(), children.getLeft())) {
+            return;
+        }
+        parent.add(treeNodeBean.getRight());
+        parent.add(treeNodeBean.getLeft());
+        if (parent.isNull()) {
+            return;
+        }
+        ischildren(parent, children);
+    }
+
+    /**
+     * 是否相等
+     *
+     * @param
+     * @return
+     * @author xuexiong@souche.com  22:25 2020-03-19
+     **/
+    private static boolean isSame(TreeNodeBean left, TreeNodeBean left1) {
+        return left.getVal().equals(left1.getVal()) && isSame(left.getLeft(), left1.getLeft()) &&
+                isSame(left.getRight(), left1.getRight());
+    }
+
+
+    /**
+     * 判断一颗树是否为平衡树
+     * <p>
      * 只要子树是平衡树，那么就是二叉树
      *
      * @param
@@ -43,12 +95,12 @@ public class CommonTreeDemo {
      * @author xuexiong@souche.com  22:01 2020-03-09
      **/
     private static boolean isAvl(TreeNodeBean treeNodeBean) {
-        if(treeNodeBean==null){
+        if (treeNodeBean == null) {
             return true;
         }
-        if(Math.abs(height(treeNodeBean.getLeft())-height(treeNodeBean.getRight()))>1){
+        if (Math.abs(height(treeNodeBean.getLeft()) - height(treeNodeBean.getRight())) > 1) {
             return false;
-        }else {
+        } else {
             return isAvl(treeNodeBean.getLeft()) && isAvl(treeNodeBean.getRight());
         }
     }
