@@ -12,6 +12,8 @@
     <modules>
         <module>algorthm-tree</module>
         <module>algortthm-bean</module>
+        <module>algorithm-set</module>
+        <module>algorithm-demo</module>
     </modules>
 
     <properties>
