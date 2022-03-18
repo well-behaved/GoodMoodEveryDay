@@ -14,12 +14,43 @@ public class SortArray {
         //插入排序
         sortInsert(array);
         System.out.println(Arrays.toString(array));
+
+
         //快速排序
         int[] array2 = {1, 2, 34, 23, 1, 34, 53, 1, 23
                 , 6, 7, 43, 123, 4};
         fastSort(array2, 0, array.length - 1);
         System.out.println(Arrays.toString(array2));
 
+        //冒泡排序
+        int[] array3 = {1, 2, 34, 23, 1, 34, 53, 1, 23
+                , 6, 7, 43, 123, 4};
+        bubbleSort(array3);
+        System.out.println(Arrays.toString(array3));
+
+
+
+    }
+
+    /**
+     * @return
+     * @throws
+     * @author xuexiong@souche.com
+     * @date 2022/3/18 17:21
+     */
+    public static void bubbleSort(int[] array) {
+        if (array == null || array.length == 0) {
+            return;
+        }
+        for (int i = 0; i < array.length; i++) {
+            for (int k = 0; k < array.length-i-1; k++) {
+                if(array[k]>=array[k+1]){
+                    int temp = array[k];
+                    array[k] = array[k+1];
+                    array[k+1] = temp;
+                }
+            }
+        }
     }
 
     /**
