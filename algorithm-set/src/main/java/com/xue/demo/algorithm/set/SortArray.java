@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class SortArray {
     public static void main(String[] args) {
+        int k = 0;
         int[] array = {1, 2, 34, 23, 1, 34, 53, 1, 23
                 , 6, 7, 43, 123, 4};
         //插入排序
@@ -34,6 +35,116 @@ public class SortArray {
         selectSort(array4);
         System.out.println("选择排序" + Arrays.toString(array4));
 
+
+        //希尔排序
+        int[] array5 = {1, 2, 34, 23, 1, 34, 53, 1, 23
+                , 6, 7, 43, 123, 4};
+        shellSort(array5);
+        System.out.println("希尔排序" + Arrays.toString(array5));
+
+        //归并排序
+        int[] array6 = {1, 2, 34, 23, 1, 34, 53, 1, 23
+                , 6, 7, 43, 123, 4};
+        mergeSort(array6);
+        System.out.println("归并排序" + Arrays.toString(array6));
+
+
+    }
+
+    /**
+     * 归并排序
+     * 分治 分组 然后组内排 然后合并分组
+     *
+     * @return
+     * @throws
+     * @author xuexiong@souche.com
+     * @date 2022/3/21 10:18
+     */
+    public static void mergeSort(int[] array) {
+        if (array == null || array.length < 2) {
+            return;
+        }
+        mergeSort(array, 0, array.length - 1);
+    }
+
+    /**
+     * 归并排序
+     *
+     * @return
+     * @throws
+     * @author xuexiong@souche.com
+     * @date 2022/3/21 17:10
+     */
+    private static void mergeSort(int[] array, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int mid = (low + high) / 2;
+        // 左边
+        mergeSort(array, low, mid);
+        // 右边
+        mergeSort(array, mid + 1, high);
+        // 左右归并
+        merge(array, low, mid, high);
+    }
+
+    private static void merge(int[] array, int low, int mid, int high) {
+        int[] temp = new int[high - low + 1];
+        int i = low;// 左指针
+        int j = mid + 1;// 右指针
+        int k = 0;
+        // 把较小的数先移到新数组中
+        while (i <= mid && j <= high) {
+            if (array[i] < array[j]) {
+                temp[k++] = array[i++];
+            } else {
+                temp[k++] = array[j++];
+            }
+        }
+        // 把左边剩余的数移入数组
+        while (i <= mid) {
+            temp[k++] = array[i++];
+        }
+        // 把右边边剩余的数移入数组
+        while (j <= high) {
+            temp[k++] = array[j++];
+        }
+        // 把新数组中的数覆盖nums数组
+        for (int k2 = 0; k2 < temp.length; k2++) {
+            array[k2 + low] = temp[k2];
+        }
+    }
+
+    /**
+     * 希尔排序
+     * <p>
+     *
+     * @return
+     * @throws
+     * @author xuexiong@souche.com
+     * @date 2022/3/21 10:18
+     */
+    public static void shellSort(int[] array) {
+        if (array == null || array.length < 2) {
+            return;
+        }
+        //步长
+        int between = array.length;
+        while (between != 1) {
+            between = between / 2;
+            for (int i = 0; i < array.length - between; i++) {
+                //交换 排序
+                int temp = array[i];
+                int j = i + between;
+                for (; j < array.length; j += between) {
+                    if (array[j] < array[j - between]) {
+                        array[j] = array[j - between];
+
+                    }
+                }
+                array[j - between] = temp;
+            }
+        }
 
     }
 
