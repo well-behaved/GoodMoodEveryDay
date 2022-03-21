@@ -17,6 +17,10 @@ public class Demo2 {
         System.out.println(getN(7));
         System.out.println(getN(8));
         System.out.println(getN(9));
+        System.out.println(getN(10));
+        System.out.println(getN(11));
+        System.out.println(getN(12));
+        System.out.println(getN(13));
     }
 
     /**
