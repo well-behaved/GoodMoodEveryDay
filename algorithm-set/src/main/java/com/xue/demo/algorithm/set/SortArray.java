@@ -13,26 +13,64 @@ public class SortArray {
                 , 6, 7, 43, 123, 4};
         //插入排序
         sortInsert(array);
-        System.out.println(Arrays.toString(array));
+        System.out.println("插入排序" + Arrays.toString(array));
 
 
         //快速排序
         int[] array2 = {1, 2, 34, 23, 1, 34, 53, 1, 23
                 , 6, 7, 43, 123, 4};
         fastSort(array2, 0, array.length - 1);
-        System.out.println(Arrays.toString(array2));
+        System.out.println("快速排序" + Arrays.toString(array2));
 
         //冒泡排序
         int[] array3 = {1, 2, 34, 23, 1, 34, 53, 1, 23
                 , 6, 7, 43, 123, 4};
         bubbleSort(array3);
-        System.out.println(Arrays.toString(array3));
+        System.out.println("冒泡排序" + Arrays.toString(array3));
 
+        //选择排序
+        int[] array4 = {1, 2, 34, 23, 1, 34, 53, 1, 23
+                , 6, 7, 43, 123, 4};
+        selectSort(array4);
+        System.out.println("选择排序" + Arrays.toString(array4));
 
 
     }
 
     /**
+     * 选择排序
+     * <p>
+     * 选择排序 先找第一个位置最小的，然后第二位置最小的。依次类推，也就是按照位置找数
+     *
+     * @return
+     * @throws
+     * @author xuexiong@souche.com
+     * @date 2022/3/21 10:18
+     */
+    public static void selectSort(int[] array) {
+        if (array == null || array.length == 0) {
+            return;
+        }
+        for (int i = 0; i < array.length - 1; i++) {
+            //i 位置 应该放置最小的数，初始值默认为i
+            int tempIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                //找到tempIndex位置应该对应的数字
+                if (array[tempIndex] >= array[j]) {
+                    tempIndex = j;
+                }
+            }
+            //此时tempValue位置为当前 为最小值。交换到i位置即可
+            int tempValue = array[tempIndex];
+            array[tempIndex] = array[i];
+            array[i] = tempValue;
+        }
+
+    }
+
+    /**
+     * 冒泡排序
+     *
      * @return
      * @throws
      * @author xuexiong@souche.com
@@ -43,11 +81,11 @@ public class SortArray {
             return;
         }
         for (int i = 0; i < array.length; i++) {
-            for (int k = 0; k < array.length-i-1; k++) {
-                if(array[k]>=array[k+1]){
+            for (int k = 0; k < array.length - i - 1; k++) {
+                if (array[k] >= array[k + 1]) {
                     int temp = array[k];
-                    array[k] = array[k+1];
-                    array[k+1] = temp;
+                    array[k] = array[k + 1];
+                    array[k + 1] = temp;
                 }
             }
         }
