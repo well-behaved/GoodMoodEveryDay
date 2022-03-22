@@ -214,7 +214,7 @@ public class SortArray {
      * @author xuexiong@souche.com  17:13 2020-04-20
      **/
     private static void fastSort(int[] array, int leftIndex, int rightIndex) {
-        if (leftIndex >= rightIndex) {
+        if (leftIndex > rightIndex) {
             return;
         }
         //选定基准 从左边开始吧
@@ -227,7 +227,7 @@ public class SortArray {
                 leftIndexNow++;
             }
             //找到右边第一个小于基准值的
-            while (array[rightIndexNow] >= baseNum && leftIndexNow < rightIndexNow) {
+            while (array[rightIndexNow] > baseNum && leftIndexNow < rightIndexNow) {
                 rightIndexNow--;
             }
             //交换位置
