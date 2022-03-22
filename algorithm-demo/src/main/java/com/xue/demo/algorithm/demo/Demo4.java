@@ -13,5 +13,6 @@ public class Demo4 {
         NodeBean nodeBean = new NodeBean();
         nodeBean.ramdomInit();
         nodeBean.printSelf();
+        // @see com.xue.demo.algorithm.set.Link
     }
 }
