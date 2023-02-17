@@ -14,6 +14,7 @@
         <module>algortthm-bean</module>
         <module>algorithm-set</module>
         <module>algorithm-demo</module>
+        <module>algorithm-baseapi</module>
     </modules>
 
     <properties>
