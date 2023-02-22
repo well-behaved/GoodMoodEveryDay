@@ -15,6 +15,7 @@
         <module>algorithm-set</module>
         <module>algorithm-demo</module>
         <module>algorithm-baseapi</module>
+        <module>algorithm-AMGraph</module>
     </modules>
 
     <properties>
