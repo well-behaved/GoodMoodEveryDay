@@ -21,6 +21,7 @@ public class AMGraph {
      */
     private int[][] lines = null;
 
+
     /**
      * 打印一个图
      *

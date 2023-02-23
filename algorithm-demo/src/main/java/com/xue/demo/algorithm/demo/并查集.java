@@ -8,7 +8,7 @@ import java.util.List;
  * @date: 2020-04-15 20:46
  * @description: 并查集
  */
-public class Demo1 {
+public class 并查集 {
     /**
      * 求子集
      * 输入： nums = [1,2,3]
