@@ -93,7 +93,7 @@ public class NodeBean {
     }
 
     /**
-     * 初始换一个链表类 随机值
+     * 控制台输出当前链表
      *
      * @param
      * @return
