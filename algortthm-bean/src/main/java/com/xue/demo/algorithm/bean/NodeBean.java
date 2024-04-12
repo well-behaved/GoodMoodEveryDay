@@ -17,7 +17,7 @@ public class NodeBean {
      * @param
      * @return
      **/
-    private Object data;
+    public Object data;
     /**
      * 当前链表
      *
@@ -25,7 +25,7 @@ public class NodeBean {
      * @param
      * @return
      **/
-    private NodeBean next;
+    public NodeBean next;
 
     public NodeBean(Object data, NodeBean next) {
         this.data = data;
@@ -60,7 +60,7 @@ public class NodeBean {
      **/
     public void ramdomInit() {
         this.setData((new Random().nextInt(5000)));
-        for (int i = 0; i < (Math.random() * 20+5); i++) {
+        for (int i = 0; i < (Math.random() * 20 + 5); i++) {
             NodeBean lastestNode = this;
             while (lastestNode.getNext() != null) {
                 lastestNode = lastestNode.next;
@@ -68,6 +68,23 @@ public class NodeBean {
             NodeBean lasteNodeNew = new NodeBean();
             lastestNode.setNext(lasteNodeNew);
             lasteNodeNew.setData(new Random().nextInt(5000));
+        }
+    }
+
+    public void initByArray(int[] arrays) {
+        if (arrays == null || arrays.length == 0) {
+            return;
+        }
+        NodeBean tempNodeBean = this;
+        for (int oneItem : arrays) {
+            if (tempNodeBean.getData() == null) {
+                //第一个
+                tempNodeBean.data = oneItem;
+            } else {
+                NodeBean nextNodeBean = new NodeBean(oneItem, null);
+                tempNodeBean.next = nextNodeBean;
+                tempNodeBean = nextNodeBean;
+            }
         }
     }
 
@@ -81,7 +98,7 @@ public class NodeBean {
     public void printSelf() {
         NodeBean nodeBean = this;
         StringBuilder stringBuilder = new StringBuilder();
-        while (nodeBean.getNext()!=null){
+        while (nodeBean.getNext() != null) {
             stringBuilder.append(nodeBean.data).append(" -> ");
             nodeBean = nodeBean.getNext();
         }

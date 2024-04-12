@@ -9,7 +9,6 @@ import java.util.Arrays;
  */
 public class SortArray {
     public static void main(String[] args) {
-        int k = 0;
         int[] array = {1, 2, 34, 23, 1, 34, 53, 1, 23
                 , 6, 7, 43, 123, 4};
         //插入排序

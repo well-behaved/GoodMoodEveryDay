@@ -21,15 +21,15 @@ public class TreeNodeBean {
     /**
      * 值
      */
-    Integer val;
+    public Integer val;
     /**
      * 左子节点
      */
-    TreeNodeBean left;
+    public TreeNodeBean left;
     /**
      * 右子节点
      */
-    TreeNodeBean right;
+    public TreeNodeBean right;
 
     public TreeNodeBean(Integer val) {
         this.val = val;
