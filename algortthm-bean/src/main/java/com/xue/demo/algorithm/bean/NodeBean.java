@@ -71,6 +71,10 @@ public class NodeBean {
         }
     }
 
+    /**
+     * 通过数组初始化指定的链表
+     * @param arrays
+     */
     public void initByArray(int[] arrays) {
         if (arrays == null || arrays.length == 0) {
             return;
