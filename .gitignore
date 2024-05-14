@@ -13,5 +13,6 @@ target/
 web/APP_NAME_IS_UNDEFINED/
 *.log
 rebel.xml
+**/bin
 
 
